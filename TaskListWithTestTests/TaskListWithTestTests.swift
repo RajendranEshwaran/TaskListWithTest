@@ -9,28 +9,26 @@ import XCTest
 @testable import TaskListWithTest
 
 final class TaskListWithTestTests: XCTestCase {
-
+    private var vm: TaskListViewModel!
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        vm = TaskListViewModel()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+       vm = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testAddTask() {
+        // Arrange
+        
+        let count = vm.tasks.count
+        let newTask = "New Task"
+        
+        // Act
+        vm.addTask(name: newTask)
+        
+        // Assertion
+        XCTAssert(vm.tasks.count == count + 1)
+        XCTAssert(vm.tasks.last?.name == newTask)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

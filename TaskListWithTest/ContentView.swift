@@ -22,7 +22,8 @@ struct ContentView: View {
                     TextField("Enter Task Name", text: $addNewTask)
                     
                     Button("Add Task") {
-                        viewModel.addTask(name: "New Task")
+                        viewModel.addTask(name: addNewTask)
+                        addNewTask = ""
                     }
                 }
             }
