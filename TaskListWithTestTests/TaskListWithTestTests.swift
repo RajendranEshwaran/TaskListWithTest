@@ -18,6 +18,19 @@ final class TaskListWithTestTests: XCTestCase {
        vm = nil
     }
     
+    func testTaskWithEmptyName() {
+        let newTask = ""
+        
+        // When
+        let count  = vm.tasks.count
+        
+        // Given == giving input
+        vm.addTask(name: newTask)
+        
+        // Then == Result
+        XCTAssertEqual(vm.tasks.count, count)
+    }
+    
     func testAddTask() {
         // Arrange
         
@@ -31,4 +44,5 @@ final class TaskListWithTestTests: XCTestCase {
         XCTAssert(vm.tasks.count == count + 1)
         XCTAssert(vm.tasks.last?.name == newTask)
     }
+    
 }
